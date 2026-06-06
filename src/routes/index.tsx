@@ -1,29 +1,58 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Preloader } from "@/components/Preloader";
+import { CustomCursor } from "@/components/CustomCursor";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { Nav } from "@/components/Nav";
+import { Hero } from "@/components/sections/Hero";
+import { BentoAbout } from "@/components/sections/BentoAbout";
+import { Projects } from "@/components/sections/Projects";
+import { Contact } from "@/components/sections/Contact";
+import { AIChat } from "@/components/AIChat";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Muhammad Ishaq — Frontend Developer" },
+      {
+        name: "description",
+        content:
+          "Self-taught frontend developer crafting dynamic, accessible and highly responsive web experiences with React, TypeScript and Tailwind CSS.",
+      },
+      { property: "og:title", content: "Muhammad Ishaq — Frontend Developer" },
+      {
+        property: "og:description",
+        content:
+          "Premium, interactive portfolio of Muhammad Ishaq — React, Next.js, TypeScript and creative UI engineering.",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [ready, setReady] = useState(false);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Preloader onComplete={() => setReady(true)} />
+      {ready && (
+        <>
+          <SmoothScroll />
+          <CustomCursor />
+          <Nav />
+          <main>
+            <Hero />
+            <BentoAbout />
+            <Projects />
+            <Contact />
+          </main>
+          <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Muhammad Ishaq · Built with React & Lovable AI
+          </footer>
+          <AIChat />
+        </>
+      )}
+    </>
   );
 }
