@@ -16,7 +16,7 @@ export function Hero() {
 
       <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl md:text-8xl">
         {["Muhammad", "Ishaq"].map((word, wi) => (
-          <span key={word} className="block overflow-hidden">
+          <span key={word} className="block overflow-hidden pb-[0.12em]">
             <motion.span
               className="inline-block"
               initial={{ y: "110%" }}
