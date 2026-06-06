@@ -133,6 +133,89 @@
 
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Glassmorphic outline stroke for kinetic text */
+  .text-stroke {
+    color: transparent;
+    -webkit-text-stroke: 1.5px color-mix(in oklab, var(--foreground) 55%, transparent);
+    text-shadow: 0 1px 30px color-mix(in oklab, var(--foreground) 12%, transparent);
+  }
+
+  /* Animated gradient that shifts on mouse move via custom props */
+  .text-gradient-kinetic {
+    background: linear-gradient(
+      calc(100deg + var(--mx, 0deg)),
+      var(--glow),
+      var(--glow-2),
+      var(--glow)
+    );
+    background-size: 220% 220%;
+    background-position: var(--bgx, 50%) var(--bgy, 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Infinite marquee */
+  .marquee {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee 14s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Traced animated gradient border for CTAs */
+  .trace-border {
+    position: relative;
+    isolation: isolate;
+  }
+  .trace-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+      from var(--angle, 0deg),
+      transparent 0%,
+      var(--glow) 25%,
+      var(--glow-2) 50%,
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .trace-border:hover::before {
+    opacity: 1;
+    animation: trace-spin 2.2s linear infinite;
+  }
+  @keyframes trace-spin {
+    to { --angle: 360deg; }
+  }
+
+  /* Pulsing status dot */
+  .status-dot {
+    box-shadow: 0 0 0 0 color-mix(in oklab, oklch(0.78 0.18 150) 70%, transparent);
+    animation: status-pulse 2s ease-out infinite;
+  }
+  @keyframes status-pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in oklab, oklch(0.78 0.18 150) 70%, transparent); }
+    70% { box-shadow: 0 0 0 8px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
 @media (hover: hover) and (pointer: fine) {
