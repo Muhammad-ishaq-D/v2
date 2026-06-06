@@ -1,0 +1,6 @@
+# Muhammad Ishaq
+
+> Premium portfolio of Muhammad Ishaq, a self-taught frontend developer specializing in dynamic, accessible, and highly responsive web experiences.
+
+## Pages
+- [Home](/): Hero, about, tech stack, featured projects, and contact.
