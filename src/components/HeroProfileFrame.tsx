@@ -58,7 +58,7 @@ function SkillBadge({
       <motion.div
         className="hero-skill-badge flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg"
         style={{ "--badge-glow": glow } as React.CSSProperties}
-        animate={reduced ? undefined : float}
+        animate={reduced ? undefined : { y: [...float.y], x: [...float.x] }}
         transition={
           reduced
             ? undefined
