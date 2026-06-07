@@ -134,6 +134,15 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+  /* Thin visible side scrollbar for the chat message area */
+  .chat-scroll { scrollbar-width: thin; scrollbar-color: var(--glow) transparent; }
+  .chat-scroll::-webkit-scrollbar { width: 6px; }
+  .chat-scroll::-webkit-scrollbar-track { background: transparent; }
+  .chat-scroll::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background: linear-gradient(var(--glow), var(--glow-2));
+  }
+
   /* Glassmorphic outline stroke for kinetic text */
   .text-stroke {
     color: transparent;
