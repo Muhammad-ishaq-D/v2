@@ -47,6 +47,9 @@ function Index() {
           <main>
             <Hero />
             <BentoAbout />
+            <Experience />
+            <Education />
+            <Skills />
             <Projects />
             <Contact />
           </main>
