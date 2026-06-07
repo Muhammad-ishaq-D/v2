@@ -3,6 +3,9 @@ import { Magnetic } from "@/components/Magnetic";
 
 const LINKS = [
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
+  { label: "Skills", href: "#skills" },
   { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
