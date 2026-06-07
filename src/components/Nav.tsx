@@ -3,6 +3,9 @@ import { Magnetic } from "@/components/Magnetic";
 
 const LINKS = [
   { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
+  { label: "Skills", href: "#skills" },
   { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
@@ -18,7 +21,7 @@ export function Nav() {
       <a href="#" className="font-display text-lg font-bold tracking-tight">
         M<span className="text-gradient">I</span>.
       </a>
-      <nav className="hidden gap-1 sm:flex">
+      <nav className="hidden gap-1 md:flex">
         {LINKS.map((l) => (
           <a
             key={l.href}

@@ -6,6 +6,9 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { BentoAbout } from "@/components/sections/BentoAbout";
+import { Experience } from "@/components/sections/Experience";
+import { Education } from "@/components/sections/Education";
+import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { AIChat } from "@/components/AIChat";
@@ -44,6 +47,9 @@ function Index() {
           <main>
             <Hero />
             <BentoAbout />
+            <Experience />
+            <Education />
+            <Skills />
             <Projects />
             <Contact />
           </main>
