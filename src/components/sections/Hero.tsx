@@ -5,7 +5,7 @@ import { ProximityMagnetic } from "@/components/ProximityMagnetic";
 import { HeroBackground } from "@/components/HeroBackground";
 import { HeroProfileFrame } from "@/components/HeroProfileFrame";
 
-const MARQUEE = ["Frontend Architect", "UI Specialist", "Open to Offers"];
+const MARQUEE = ["MERN Stack Developer", "AI Integration Enthusiast", "Frontend Specialist"];
 
 function ScrollIndicator() {
   const [hidden, setHidden] = useState(false);
@@ -145,8 +145,7 @@ export function Hero() {
               transition={{ delay: 0.7, duration: 0.6 }}
               className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg"
             >
-              I craft dynamic, accessible and highly responsive web experiences with clean
-              code and creative UI — turning ambitious ideas into polished products.
+              I craft modern, scalable web applications with clean code and creative UI — from responsive front-ends to robust back-ends and AI integrations.
             </motion.p>
 
             <motion.div

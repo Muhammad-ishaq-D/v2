@@ -54,7 +54,7 @@ function Index() {
             <Contact />
           </main>
           <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Muhammad Ishaq · Built with React & Lovable AI
+            © {new Date().getFullYear()} Muhammad Ishaq · Built with React
           </footer>
           <AIChat />
         </>

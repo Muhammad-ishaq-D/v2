@@ -3,7 +3,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { AnimatePresence, motion } from "framer-motion";
 import { Send, X, MessageCircle } from "lucide-react";
-import avatar from "@/assets/avatar.jpg";
+import avatar from "@/assets/avatar.png";
 
 const SUGGESTIONS = [
   "What's your tech stack?",
@@ -124,13 +124,13 @@ export function AIChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ type: "spring", stiffness: 260, damping: 26 }}
-            className="glass fixed bottom-28 right-6 z-[60] flex h-[32rem] max-h-[70vh] w-[calc(100vw-3rem)] max-w-sm flex-col overflow-hidden rounded-3xl"
+            className="fixed bottom-20 right-6 z-[60] flex h-[32rem] max-h-[70vh] w-[calc(100vw-3rem)] max-w-sm flex-col overflow-hidden rounded-3xl bg-background/95 backdrop-blur-xl border border-border shadow-2xl"
           >
             <div className="flex items-center gap-3 border-b border-border p-4">
-              <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full ring-2 ring-[var(--glow)]/40">
-                <img src={avatar} alt="Ishaq" className="h-full w-full object-cover" />
-                <span className="absolute -bottom-0 -right-0 h-3 w-3 rounded-full border-2 border-background bg-emerald-400" />
-              </span>
+              <div className="relative flex h-9 w-9 shrink-0">
+                <img src={avatar} alt="Ishaq" className="h-full w-full rounded-full object-cover ring-2 ring-[var(--glow)]/40" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-emerald-400" />
+              </div>
               <div>
                 <p className="text-sm font-semibold">AI Twin of Ishaq</p>
                 <p className="text-xs text-emerald-400">Online · ask me anything</p>

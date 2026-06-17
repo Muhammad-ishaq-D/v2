@@ -60,7 +60,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.1, duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
             >
-              Javascript Developer
+              MERN Stack Developer
             </motion.p>
           </div>
 

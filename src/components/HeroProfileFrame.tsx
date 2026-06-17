@@ -6,11 +6,11 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { Layers, Palette, GitBranch } from "lucide-react";
-import avatar from "@/assets/avatar.jpg";
+import avatar from "@/assets/avatar.png";
 
 const BADGES = [
   {
-    label: "React / Next.js Specialist",
+    label: "MERN Stack Specialist",
     icon: Layers,
     position: "top-[-0.75rem] left-[-0.5rem] sm:left-[-1.25rem]",
     float: { y: [0, -7, 0], x: [0, 3, 0] },
@@ -19,7 +19,7 @@ const BADGES = [
     glow: "var(--glow)",
   },
   {
-    label: "UI/UX & Pixel Perfect Design",
+    label: "AI Assistant Integration",
     icon: Palette,
     position: "top-[18%] right-[-0.75rem] sm:right-[-1.5rem]",
     float: { y: [0, 6, 0], x: [0, -4, 0] },
@@ -63,11 +63,11 @@ function SkillBadge({
           reduced
             ? undefined
             : {
-                duration,
-                delay,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }
+              duration,
+              delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }
         }
       >
         <span

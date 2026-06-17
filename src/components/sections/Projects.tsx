@@ -5,7 +5,10 @@ import { PROJECTS, FILTERS } from "@/lib/portfolio-data";
 
 export function Projects() {
   const [filter, setFilter] = useState<string>("All");
+  const [expanded, setExpanded] = useState<boolean>(false);
+  
   const visible = PROJECTS.filter((p) => filter === "All" || p.tags.includes(filter));
+  const displayed = expanded ? visible : visible.slice(0, 4);
 
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-24">
@@ -43,7 +46,7 @@ export function Projects() {
 
       <motion.div layout className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <AnimatePresence mode="popLayout">
-          {visible.map((p) => (
+          {displayed.map((p) => (
             <motion.article
               key={p.title}
               layout
@@ -52,13 +55,20 @@ export function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              className="glass glow-border group relative overflow-hidden rounded-3xl"
+              onClick={() => p.links?.[0] && window.open(p.links[0].url, "_blank")}
+              className={`glass glow-border group relative overflow-hidden rounded-3xl ${p.links?.[0] ? "cursor-pointer" : ""}`}
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <img
-                  src={p.image}
+                  src={p.links?.[0]?.url ? `/api/og?url=${encodeURIComponent(p.links[0].url)}` : p.image}
                   alt={p.title}
                   loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.endsWith(p.image)) {
+                      target.src = p.image;
+                    }
+                  }}
                   className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
@@ -69,6 +79,22 @@ export function Projects() {
                   <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--glow)]" />
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                {p.links && (
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {p.links.map((link) => (
+                      <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="relative z-20 inline-flex items-center gap-1 text-xs font-semibold text-[var(--glow)] transition-colors hover:text-[var(--glow-2)]"
+                      >
+                        {link.label} <ArrowUpRight className="h-3 w-3" />
+                      </a>
+                    ))}
+                  </div>
+                )}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <span key={t} className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
@@ -81,6 +107,25 @@ export function Projects() {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {visible.length > 4 && (
+        <motion.div layout className="mt-14 flex justify-center">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-8 py-3.5 text-sm font-semibold text-foreground transition-all hover:border-[var(--glow)] hover:text-[var(--glow)] shadow-sm hover:shadow-[0_0_15px_rgba(var(--glow),0.15)]"
+          >
+            {expanded ? "Show Less" : "View More"}
+            <motion.svg
+              animate={{ rotate: expanded ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              className="mt-0.5"
+            >
+              <path d="m6 9 6 6 6-6"/>
+            </motion.svg>
+          </button>
+        </motion.div>
+      )}
     </section>
   );
 }
