@@ -21,7 +21,7 @@ const BADGES = [
   {
     label: "AI Assistant Integration",
     icon: Palette,
-    position: "top-[18%] right-[-0.75rem] sm:right-[-1.5rem]",
+    position: "top-[45%] right-[-0.75rem] sm:top-[18%] sm:right-[-1.5rem]",
     float: { y: [0, 6, 0], x: [0, -4, 0] },
     duration: 4.6,
     delay: 0.4,

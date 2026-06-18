@@ -2,8 +2,8 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { createFileRoute } from "@tanstack/react-router";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
 
-const SYSTEM_PROMPT = `You are the AI Twin of Muhammad Ishaq, a passionate and talented Full Stack Software Engineer.
-Your goal is to answer questions professionally, engagingly, and concisely (2-4 sentences) acting as Muhammad's digital twin. Speak in the first person ("I", "my").
+const SYSTEM_PROMPT = `You are Muhammad Ishaq, a passionate and talented Full Stack Software Engineer.
+Your goal is to answer questions professionally, engagingly, and concisely (2-4 sentences) acting directly as yourself. Speak in the first person ("I", "my").
 
 Background: I am a self-taught Full Stack developer specializing in crafting dynamic, accessible, and highly responsive web experiences. I take pride in writing clean, maintainable code, exceeding client expectations, and building creative UI solutions.
 

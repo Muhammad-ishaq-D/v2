@@ -6,14 +6,13 @@ import { Send, X, MessageCircle, ExternalLink } from "lucide-react";
 import avatar from "@/assets/avatar.png";
 
 const SUGGESTIONS = [
+  "Tell me about yourself?",
   "What's your tech stack?",
-  "Tell me about the Diabetes project",
   "How can I contact you?",
 ];
 
 export function AIChat() {
   const [open, setOpen] = useState(false);
-  const [teaser, setTeaser] = useState(false);
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -22,13 +21,6 @@ export function AIChat() {
   });
 
   const loading = status === "submitted" || status === "streaming";
-
-  // Draw attention to the launcher shortly after load, until first opened.
-  useEffect(() => {
-    if (open) return;
-    const t = setTimeout(() => setTeaser(true), 2600);
-    return () => clearTimeout(t);
-  }, [open]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -44,37 +36,13 @@ export function AIChat() {
     <>
       {/* Launcher */}
       <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-3">
-        <AnimatePresence>
-          {teaser && !open && (
-            <motion.button
-              key="teaser"
-              onClick={() => {
-                setOpen(true);
-                setTeaser(false);
-              }}
-              initial={{ opacity: 0, y: 10, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.9 }}
-              className="glass max-w-[15rem] rounded-2xl rounded-br-md px-4 py-3 text-left shadow-lg"
-            >
-              <p className="text-sm font-semibold">👋 Curious about Ishaq?</p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                Chat with my AI twin — ask about skills, projects or hiring.
-              </p>
-            </motion.button>
-          )}
-        </AnimatePresence>
-
         <motion.button
           data-cursor="Chat"
-          onClick={() => {
-            setOpen((o) => !o);
-            setTeaser(false);
-          }}
+          onClick={() => setOpen((o) => !o)}
           className="group relative flex items-center gap-2.5 rounded-full bg-gradient-to-br from-[var(--glow)] to-[var(--glow-2)] py-2 pl-2 pr-4 text-background shadow-lg shadow-[var(--glow)]/30"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
-          aria-label={open ? "Close chat" : "Chat with Ishaq's AI twin"}
+          aria-label={open ? "Close chat" : "Chat with Ishaq"}
         >
           {!open && (
             <motion.span
@@ -99,7 +67,7 @@ export function AIChat() {
                 <motion.img
                   key="avatar"
                   src={avatar}
-                  alt="Ishaq AI twin"
+                  alt="Muhammad Ishaq"
                   className="h-full w-full object-cover"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -132,7 +100,7 @@ export function AIChat() {
                 <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-emerald-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold">AI Twin of Ishaq</p>
+                <p className="text-sm font-semibold">Ishaq</p>
                 <p className="text-xs text-emerald-400">Online · ask me anything</p>
               </div>
             </div>
@@ -144,7 +112,7 @@ export function AIChat() {
               {messages.length === 0 && (
                 <div className="space-y-3">
                   <p className="text-sm text-muted-foreground">
-                    Hi! I'm Muhammad's AI twin. Ask me anything about his skills or projects.
+                    Hi! I'm Muhammad. Ask me anything about my skills or projects.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {SUGGESTIONS.map((s) => (
