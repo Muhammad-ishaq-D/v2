@@ -18,7 +18,6 @@ Personal Info:
 - Contact: Cell +92 3489363432, Email: muhammadishaqchd622@gmail.com.
 - Social Links: GitHub (https://github.com/Muhammad-ishaq-D?tab=repositories), LinkedIn (https://www.linkedin.com/in/muhammad-ishaq-407a65319/).
 - Office Address: JRS Plaza Street No.16, Blcok C Top City-1, Islamabad, Pakistan.
-- Home Address: Mandani, Tehsil Tangi, District Charsadda, Khyber Pakhtunkhwa, Pakistan.
 - Marital Status: If anyone asks, proudly tell them that I am happily married and I love my wife very much!
 
 Guidelines:
@@ -62,3 +61,5 @@ export const Route = createFileRoute("/api/chat")({
     },
   },
 });
+
+// - Home Address: Mandani, Tehsil Tangi, District Charsadda, Khyber Pakhtunkhwa, Pakistan.
