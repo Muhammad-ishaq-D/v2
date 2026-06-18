@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { AnimatePresence, motion } from "framer-motion";
-import { Send, X, MessageCircle } from "lucide-react";
+import { Send, X, MessageCircle, ExternalLink } from "lucide-react";
 import avatar from "@/assets/avatar.png";
 
 const SUGGESTIONS = [
@@ -164,16 +164,51 @@ export function AIChat() {
                 const text = m.parts
                   .map((p) => (p.type === "text" ? p.text : ""))
                   .join("");
+
+                const renderMessageText = (content: string) => {
+                  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+                  const parts = [];
+                  let lastIndex = 0;
+                  let match;
+
+                  while ((match = linkRegex.exec(content)) !== null) {
+                    if (match.index > lastIndex) {
+                      parts.push(<span key={`text-${lastIndex}`}>{content.slice(lastIndex, match.index)}</span>);
+                    }
+                    const label = match[1];
+                    const url = match[2];
+                    parts.push(
+                      <a
+                        key={`link-${match.index}`}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[var(--glow)]/10 to-[var(--glow-2)]/10 border border-[var(--glow)]/30 px-3 py-1 text-xs font-semibold text-[var(--glow)] shadow-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-[var(--glow)] hover:to-[var(--glow-2)] hover:text-background hover:shadow-[0_0_15px_rgba(var(--glow),0.5)] mx-1 my-1"
+                      >
+                        {label}
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    );
+                    lastIndex = linkRegex.lastIndex;
+                  }
+
+                  if (lastIndex < content.length) {
+                    parts.push(<span key={`text-${lastIndex}`}>{content.slice(lastIndex)}</span>);
+                  }
+
+                  return parts;
+                };
+
                 return (
                   <div key={m.id} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
                     <div
                       className={
                         m.role === "user"
                           ? "max-w-[80%] rounded-2xl rounded-br-sm bg-primary px-3.5 py-2 text-sm text-primary-foreground"
-                          : "max-w-[85%] text-sm leading-relaxed text-foreground"
+                          : "max-w-[85%] text-sm leading-relaxed text-foreground whitespace-pre-wrap"
                       }
                     >
-                      {text}
+                      {renderMessageText(text)}
                     </div>
                   </div>
                 );
