@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
         content:
           "Self-taught frontend developer crafting dynamic, accessible and highly responsive web experiences with React, TypeScript and Tailwind CSS.",
       },
-      { property: "og:title", content: "Muhammad Ishaq — Frontend Developer" },
+      { property: "og:title", content: "Muhammad Ishaq — Full Stack Developer" },
       {
         property: "og:description",
         content:
