@@ -13,6 +13,8 @@ import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { AIChat } from "@/components/AIChat";
 
+const SITE_URL = import.meta.env.VITE_SITE_URL || "https://m-ishaq-portfolio-v3.vercel.app";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -28,9 +30,9 @@ export const Route = createFileRoute("/")({
         content:
           "Premium, interactive portfolio of Muhammad Ishaq — React, Next.js, TypeScript and creative UI engineering.",
       },
-      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image", content: `${SITE_URL}/og-image.png` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/og-image.png" },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
     ],
   }),
   component: Index,
