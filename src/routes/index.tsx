@@ -16,7 +16,7 @@ import { AIChat } from "@/components/AIChat";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Muhammad Ishaq — Frontend Developer" },
+      { title: "Muhammad Ishaq — Full Stack Developer" },
       {
         name: "description",
         content:

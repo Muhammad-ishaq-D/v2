@@ -36,7 +36,7 @@ export function BentoAbout() {
           </div>
           <h3 className="font-display text-2xl font-semibold">Results-driven MERN Developer</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            I am a MERN Stack Developer with a Bachelor’s in Software Engineering and hands-on experience in building modern, scalable web applications. Passionate about learning new technologies and integrating AI-powered features.
+            I am a Full Stack Developer with a Bachelor’s in Software Engineering and hands-on experience in building modern, scalable web applications. Passionate about learning new technologies and integrating AI-powered features.
           </p>
         </motion.div>
 
