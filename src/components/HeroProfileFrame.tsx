@@ -5,12 +5,12 @@ import {
   useSpring,
   useReducedMotion,
 } from "framer-motion";
-import { Layers, Palette, GitBranch } from "lucide-react";
+import { Layers, Bot, GitBranch } from "lucide-react";
 import avatar from "@/assets/avatar.png";
 
 const BADGES = [
   {
-    label: "MERN Stack Specialist",
+    label: "MERN + Next.js",
     icon: Layers,
     position: "top-[-0.75rem] left-[-0.5rem] sm:left-[-1.25rem]",
     float: { y: [0, -7, 0], x: [0, 3, 0] },
@@ -19,8 +19,8 @@ const BADGES = [
     glow: "var(--glow)",
   },
   {
-    label: "AI Assistant Integration",
-    icon: Palette,
+    label: "AI Chat & Voice Assistants",
+    icon: Bot,
     position: "top-[45%] right-[-0.75rem] sm:top-[18%] sm:right-[-1.5rem]",
     float: { y: [0, 6, 0], x: [0, -4, 0] },
     duration: 4.6,
@@ -28,7 +28,7 @@ const BADGES = [
     glow: "var(--glow-2)",
   },
   {
-    label: "Clean Code Architecture",
+    label: "Clean, Scalable Code",
     icon: GitBranch,
     position: "bottom-[12%] left-[-0.5rem] sm:left-[-1.75rem]",
     float: { y: [0, -5, 0], x: [0, 5, 0] },
@@ -119,7 +119,7 @@ export function HeroProfileFrame() {
 
   return (
     <motion.div
-      className="relative mx-auto w-full max-w-[22rem] sm:max-w-[24rem] lg:max-w-none lg:mx-0"
+      className="relative w-[min(30rem,calc((100svh-11rem)*0.8))]"
       initial={{ opacity: 0, y: 32 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.55, duration: 0.8, ease: [0.33, 1, 0.68, 1] }}

@@ -12,6 +12,7 @@ import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { AIChat } from "@/components/AIChat";
+import { CONTACT } from "@/lib/portfolio-data";
 
 const SITE_URL = import.meta.env.VITE_SITE_URL || "https://m-ishaq-portfolio-v3.vercel.app";
 
@@ -22,13 +23,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Self-taught frontend developer crafting dynamic, accessible and highly responsive web experiences with React, TypeScript and Tailwind CSS.",
+          "Muhammad Ishaq is a Full Stack Developer in Islamabad who builds AI-powered web products (chat and voice assistants, SaaS dashboards, booking platforms) with React, Next.js, TypeScript and Node.js.",
       },
       { property: "og:title", content: "Muhammad Ishaq — Full Stack Developer" },
       {
         property: "og:description",
         content:
-          "Premium, interactive portfolio of Muhammad Ishaq — React, Next.js, TypeScript and creative UI engineering.",
+          "Full Stack Developer building AI-powered web products for healthcare, insurance and retail. See live projects, experience and contact details.",
       },
       { property: "og:image", content: `${SITE_URL}/og-image.png` },
       { name: "twitter:card", content: "summary_large_image" },
@@ -49,21 +50,34 @@ function Index() {
           <SmoothScroll />
           <CustomCursor />
           <Nav />
-          <main>
-            <Hero />
-            <BentoAbout />
-            <Experience />
-            <Education />
-            <Skills />
-            <Projects />
-            <Contact />
-          </main>
-          <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Muhammad Ishaq · Built with React
-          </footer>
-          <AIChat />
         </>
       )}
+      {/* Main content is always server-rendered so search engines and link previews see it.
+          The hero remounts once the preloader finishes so its entrance animation still plays. */}
+      <main>
+        <Hero key={ready ? "ready" : "initial"} />
+        <BentoAbout />
+        <Projects />
+        <Experience />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
+      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
+        <div className="mb-3 flex justify-center gap-5">
+          <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+            GitHub
+          </a>
+          <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+            LinkedIn
+          </a>
+          <a href={`mailto:${CONTACT.email}`} className="transition-colors hover:text-foreground">
+            Email
+          </a>
+        </div>
+        © {new Date().getFullYear()} Muhammad Ishaq · Designed & built with React, TypeScript and Tailwind CSS
+      </footer>
+      {ready && <AIChat />}
     </>
   );
 }

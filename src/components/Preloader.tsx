@@ -6,25 +6,29 @@ const NAME = "Muhammad Ishaq";
 /**
  * Cinematic preloader: staggered letter-by-letter masked reveal of the name,
  * an animated subtitle, then a curtain "slide up" scale-out.
- * Runs only once per browser session (sessionStorage).
+ * Runs only once per browser session (sessionStorage). It starts visible so the
+ * server-rendered page underneath never flashes before the splash covers it.
  */
 export function Preloader({ onComplete }: { onComplete: () => void }) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
+  const [skip, setSkip] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const seen = sessionStorage.getItem("splash-seen");
     if (seen) {
+      setSkip(true);
       onComplete();
       return;
     }
-    setShow(true);
     const t = setTimeout(() => {
       sessionStorage.setItem("splash-seen", "1");
       setShow(false);
-    }, 2600);
+    }, 1800);
     return () => clearTimeout(t);
   }, [onComplete]);
+
+  if (skip) return null;
 
   return (
     <AnimatePresence onExitComplete={onComplete}>

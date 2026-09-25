@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Magnetic } from "@/components/Magnetic";
-import { DownloadIcon } from "lucide-react";
+import { DownloadIcon, Menu, X } from "lucide-react";
+import { CONTACT } from "@/lib/portfolio-data";
 
 const LINKS = [
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Skills", href: "#skills" },
   { label: "Work", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -42,7 +44,7 @@ export function Nav() {
           Ishaq<span className="text-[var(--glow-2)]">.</span>
         </span>
       </a>
-      <nav className="hidden gap-1 md:flex">
+      <nav className="hidden gap-1 lg:flex">
         {LINKS.map((l) => (
           <a
             key={l.href}
@@ -53,9 +55,10 @@ export function Nav() {
           </a>
         ))}
       </nav>
+      <div className="flex items-center gap-2">
       <Magnetic>
         <a
-          href="https://drive.google.com/file/d/1FAVyLt79oZR0ugbVXjol6bYhnQ6u8EKZ/view?usp=drive_link"
+          href={CONTACT.resume}
           target="_blank"
           rel="noopener noreferrer"
           data-cursor="Download"
@@ -65,6 +68,39 @@ export function Nav() {
           <span>Resume</span>
         </a>
       </Magnetic>
+        <button
+          type="button"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+        >
+          {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.nav
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-x-0 top-[calc(100%+0.5rem)] flex flex-col rounded-3xl border border-border bg-background/95 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
+          >
+            {LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-2xl px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary/40 hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

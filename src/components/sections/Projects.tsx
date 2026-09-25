@@ -21,6 +21,9 @@ export function Projects() {
       >
         <p className="text-sm font-medium uppercase tracking-[0.3em] text-gradient">Work</p>
         <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">Selected projects</h2>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
+          Production products I've built for clients and employers, from AI health assistants to SaaS and booking platforms.
+        </p>
       </motion.div>
 
       <div className="mb-10 flex flex-wrap gap-2.5">
@@ -58,9 +61,9 @@ export function Projects() {
               onClick={() => p.links?.[0] && window.open(p.links[0].url, "_blank")}
               className={`glass glow-border group relative overflow-hidden rounded-3xl ${p.links?.[0] ? "cursor-pointer" : ""}`}
             >
-              <div className="aspect-[16/10] overflow-hidden">
+              <div className="relative aspect-[1200/630] overflow-hidden">
                 <img
-                  src={p.links?.[0]?.url ? `/api/og?url=${encodeURIComponent(p.links[0].url)}` : p.image}
+                  src={p.cover ?? (p.links?.[0]?.url ? `/api/og?url=${encodeURIComponent(p.links[0].url)}` : p.image)}
                   alt={p.title}
                   loading="lazy"
                   onError={(e) => {
@@ -78,7 +81,8 @@ export function Projects() {
                   <h3 className="font-display text-xl font-semibold">{p.title}</h3>
                   <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--glow)]" />
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                <p className="mt-1 text-xs font-medium uppercase tracking-widest text-[var(--glow)]">{p.role}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
                 {p.links && (
                   <div className="mt-4 flex flex-wrap gap-3">
                     {p.links.map((link) => (

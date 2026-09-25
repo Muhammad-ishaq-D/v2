@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { Code2, Sparkles, Zap, MapPin } from "lucide-react";
-import { TECH } from "@/lib/portfolio-data";
-import avatar from "@/assets/avatar.png";
+import { Briefcase, GraduationCap, MapPin, Rocket, Sparkles, Zap, Globe2 } from "lucide-react";
+import { TECH, PROJECTS, PROFILE, CONTACT, EXPERIENCE, EDUCATION } from "@/lib/portfolio-data";
+
+const LIVE_PRODUCTS = PROJECTS.filter((p) => p.links?.some((l) => l.label === "Live Website")).length;
+const AI_PRODUCTS = PROJECTS.filter((p) => p.tags.includes("AI")).length;
 
 const fade = {
   initial: { opacity: 0, y: 24 },
@@ -22,47 +24,51 @@ export function BentoAbout() {
         <motion.div
           {...fade}
           transition={{ duration: 0.6 }}
-          className="glass glow-border group relative col-span-1 overflow-hidden rounded-3xl p-7 sm:col-span-2 lg:row-span-2"
+          className="glass glow-border group relative col-span-1 flex flex-col overflow-hidden rounded-3xl p-7 sm:col-span-2 lg:row-span-2"
         >
-          <div className="relative mb-5 h-44 w-44 overflow-hidden rounded-2xl">
-            <img
-              src={avatar}
-              alt="Muhammad Ishaq"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-          </div>
-          <h3 className="font-display text-2xl font-semibold">Results-driven MERN Developer</h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            I am a Full Stack Developer with a Bachelor’s in Software Engineering and hands-on experience in building modern, scalable web applications. Passionate about learning new technologies and integrating AI-powered features.
+          <h3 className="font-display text-2xl font-semibold sm:text-3xl">Full stack, with a focus on AI products</h3>
+          <p className="mb-6 mt-4 leading-relaxed text-muted-foreground">
+            {PROFILE.summary}
           </p>
+          <ul className="mt-auto space-y-2.5 border-t border-border pt-5 text-sm text-muted-foreground">
+            <li className="flex items-center gap-3">
+              <Briefcase className="h-4 w-4 shrink-0 text-[var(--glow)]" />
+              {EXPERIENCE[0].role} at {EXPERIENCE[0].company}
+            </li>
+            <li className="flex items-center gap-3">
+              <GraduationCap className="h-4 w-4 shrink-0 text-[var(--glow)]" />
+              {EDUCATION[0].degree}, CGPA 3.72
+            </li>
+            <li className="flex items-center gap-3">
+              <MapPin className="h-4 w-4 shrink-0 text-[var(--glow)]" />
+              {CONTACT.location}, working remotely worldwide
+            </li>
+          </ul>
         </motion.div>
 
         {/* Stat cards */}
         <motion.div {...fade} transition={{ duration: 0.6, delay: 0.05 }} className="glass glow-border rounded-3xl p-6">
-          <Code2 className="mb-4 h-7 w-7 text-[var(--glow)]" />
-          <p className="font-display text-3xl font-bold">20+</p>
-          <p className="text-sm text-muted-foreground">Technologies mastered</p>
+          <Rocket className="mb-4 h-7 w-7 text-[var(--glow)]" />
+          <p className="font-display text-3xl font-bold">{LIVE_PRODUCTS}</p>
+          <p className="text-sm text-muted-foreground">Live products shipped</p>
         </motion.div>
 
         <motion.div {...fade} transition={{ duration: 0.6, delay: 0.1 }} className="glass glow-border rounded-3xl p-6">
           <Sparkles className="mb-4 h-7 w-7 text-[var(--glow-2)]" />
-          <p className="font-display text-3xl font-bold">6+</p>
-          <p className="text-sm text-muted-foreground">Featured projects</p>
+          <p className="font-display text-3xl font-bold">{AI_PRODUCTS}</p>
+          <p className="text-sm text-muted-foreground">AI products in production</p>
         </motion.div>
 
         <motion.div {...fade} transition={{ duration: 0.6, delay: 0.15 }} className="glass glow-border rounded-3xl p-6">
           <Zap className="mb-4 h-7 w-7 text-[var(--glow)]" />
           <p className="font-display text-lg font-semibold">Performance first</p>
-          <p className="text-sm text-muted-foreground">Smooth, hardware-accelerated UI.</p>
+          <p className="text-sm text-muted-foreground">Fast loads, smooth motion, SEO built in.</p>
         </motion.div>
 
         <motion.div {...fade} transition={{ duration: 0.6, delay: 0.2 }} className="glass glow-border rounded-3xl p-6">
-          <MapPin className="mb-4 h-7 w-7 text-[var(--glow-2)]" />
-          <p className="font-display text-lg font-semibold">Remote ready</p>
-          <p className="text-sm text-muted-foreground">Open to global collaboration.</p>
+          <Globe2 className="mb-4 h-7 w-7 text-[var(--glow-2)]" />
+          <p className="font-display text-lg font-semibold">Remote-proven</p>
+          <p className="text-sm text-muted-foreground">Shipping for teams in Thailand, the UK and Pakistan.</p>
         </motion.div>
 
         {/* Tech stack — wide */}

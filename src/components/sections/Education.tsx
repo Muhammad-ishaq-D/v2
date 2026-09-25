@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, BookOpen } from "lucide-react";
-import { EDUCATION, CERTIFICATIONS, COURSES } from "@/lib/portfolio-data";
+import { GraduationCap, Award } from "lucide-react";
+import { EDUCATION, CERTIFICATIONS } from "@/lib/portfolio-data";
 
 const fade = {
   initial: { opacity: 0, y: 24 },
@@ -43,19 +43,6 @@ export function Education() {
             </motion.div>
           ))}
 
-          {/* Courses */}
-          <motion.div {...fade} transition={{ duration: 0.5 }} className="glass glow-border rounded-3xl p-7">
-            <BookOpen className="mb-4 h-7 w-7 text-[var(--glow-2)]" />
-            <h3 className="mb-4 font-display text-xl font-semibold">Courses</h3>
-            <div className="grid gap-2.5 sm:grid-cols-2">
-              {COURSES.map((c) => (
-                <div key={c.title} className="rounded-2xl border border-border bg-secondary/30 px-4 py-3">
-                  <p className="text-sm font-medium">{c.title}</p>
-                  <p className="text-xs text-muted-foreground">{c.issuer}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
 
         {/* Certifications */}

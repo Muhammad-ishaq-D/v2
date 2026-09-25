@@ -1,87 +1,131 @@
-
-
 export type Project = {
   title: string;
+  role: string;
   description: string;
   image: string;
+  /** Custom cover image; when set it is used instead of the linked site's preview image. */
+  cover?: string;
   tags: string[];
   links?: { label: string; url: string }[];
 };
 
 export const PROJECTS: Project[] = [
   {
-    title: "Courses4Me Platform",
+    title: "Expat Medicare",
+    role: "Built at INSTLY Technologies",
     description:
-      "A complete full-stack e-learning platform. Features a public-facing site for students, a comprehensive admin dashboard for content management, and a robust backend API.",
-    image: "/projects/book_store.png",
-    tags: ["React.js", "Full Stack", "Admin Dashboard", "API"],
-    links: [
-      { label: "Website", url: "https://courses4me.co.uk/" },
-      { label: "Admin Dashboard", url: "https://admin.courses4me.co.uk/dashboard" },
-    ],
+      "International health insurance comparison platform for expats, in English, French and Spanish. It compares 1,000+ plans from 30+ insurers and gives personalised quotes in real time. I built Mira, an AI adviser that streams answers from the Claude API, and the analytics dashboard the team uses to track live traffic and ad performance.",
+    image: "/projects/country.png",
+    tags: ["Next.js", "TypeScript", "AI", "Full Stack"],
+    links: [{ label: "Live Website", url: "https://expatmedicare.com/" }],
   },
   {
-    title: "Ask AI Nurse",
+    title: "Cira — AI Healthcare Assistant",
+    role: "Built at INSTLY Technologies",
     description:
-      "An AI-powered healthcare assistant that gathers health information through natural conversation using intelligent chat and voice-based medical support.",
+      "AI health platform that connects patients with real doctors for consultations, prescription refills and specialist referrals. I built the streaming Claude chat, the ElevenLabs voice assistant and camera-based vital-sign scanning with Shen.AI, plus an SEO-optimised marketing site in 5 languages.",
     image: "/projects/country.png",
-    tags: ["React.js", "Material UI", "ElevenLab", "AI"],
+    tags: ["Next.js", "TypeScript", "AI", "Full Stack"],
     links: [{ label: "Live Website", url: "https://askainurse.com/" }],
   },
   {
-    title: "Ask Steller — AI Assistant",
+    title: "Stellar OS",
+    role: "Built at INSTLY Technologies",
     description:
-      "An AI-driven platform that helps users compare plans and get personalized guidance through intelligent assistance. Built complex landing pages and dashboards.",
+      "Operations platform that insurers, brokers and internal teams use to manage 1,000+ plans, pricing zones, group quotes, renewals and leads. I built the data-heavy dashboard screens and the marketing experience, including interactive 3D Spline scenes and Framer Motion transitions.",
     image: "/projects/country.png",
-    tags: ["React.js", "Material UI", "Framer Motion", "Spline"],
-    links: [{ label: "Live Website", url: "https://askstellarai.com/" }],
+    tags: ["React.js", "Tailwind CSS", "Framer Motion", "Full Stack"],
+    links: [{ label: "Live Website", url: "https://stellaros.ai/" }],
+  },
+  {
+    title: "Courses4Me",
+    role: "Full Stack Developer",
+    description:
+      "UK booking platform for SIA security licence courses across multiple locations. I built both the customer site and the admin side: a multi-step Stripe checkout, JWT and OAuth login, a careers board, a personal booking dashboard, and an admin panel with analytics and a rich-text editor.",
+    image: "/projects/book_store.png",
+    tags: ["React.js", "Node.js", "MySQL", "Full Stack"],
+    links: [{ label: "Live Website", url: "https://courses4me.co.uk/" }],
+  },
+  {
+    title: "Karyana Shop",
+    role: "Full Stack Developer · SaaS Product",
+    description:
+      "Subscription-based POS and inventory system for Pakistani grocery stores. One account can run several branches with separate staff roles. It supports barcode scanning, offline sales, udhaar (credit) tracking, profit and loss reports and PDF receipts, with English and Urdu interfaces and light and dark themes.",
+    image: "/projects/book_store.png",
+    tags: ["React.js", "Node.js", "MySQL", "Full Stack"],
+    links: [{ label: "Live Website", url: "https://karyana.shop/" }],
+  },
+  {
+    title: "Very Patient",
+    role: "Frontend Developer",
+    description:
+      "Rebuilt the company website in Next.js, turning the brand's design into a fast, fully responsive site that follows its visual identity closely.",
+    image: "/projects/country.png",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Frontend"],
+    links: [{ label: "Live Website", url: "https://verypatient.com/" }],
   },
   {
     title: "Appaura Analytics Dashboard",
+    role: "Built at Appaura",
+    cover: "/projects/appaura-analytics.svg",
     description:
-      "Developed a modern financial dashboard UI with dynamic data visualization, real-time balance tracking, transaction history, and financial analytics.",
+      "Financial analytics dashboard with live balance tracking, transaction history and interactive charts. It runs on Springboot REST APIs and MongoDB.",
     image: "/projects/country.png",
-    tags: ["React.js", "Spring Boot", "Tailwind CSS", "MongoDB"],
+    tags: ["React.js", "Supabase", "Tailwind CSS", "MongoDB"],
     links: [{ label: "Appaura Products", url: "https://appaura.net/products/" }],
   },
   {
-    title: "Crown Clothing E-Commerce",
+    title: "Web-Based Diabetes Prediction",
+    role: "Academic Project",
     description:
-      "Developed a complete e-commerce solution with cart, checkout, and payment processing. Integrated Firebase for authentication and Firestore for real-time data storage.",
+      "Full-stack web app that predicts diabetes risk using several machine-learning models built in Python, with a Node.js and MongoDB backend, secure login and a clean Tailwind interface.",
+    image: "/projects/diabetes-prediction.svg",
+    tags: ["React.js", "Python", "Node.js", "MongoDB"],
+  },
+  {
+    title: "Crown Clothing E-Commerce",
+    role: "Learning Project · Zero To Mastery",
+    description:
+      "E-commerce store with a product catalogue, cart and checkout. Built with Redux for state management, Firebase for login and Firestore for real-time data.",
     image: "/projects/book_store.png",
-    tags: ["React.js", "Redux", "Firebase", "Stripe"],
+    tags: ["React.js", "Redux", "Firebase"],
     links: [{ label: "Project Details", url: "https://zerotomastery.io/courses/learn-react/#projects" }],
   },
   {
-    title: "Fanbase App Clone",
+    title: "Fanbase UI Recreation",
+    role: "Learning Project",
     description:
-      "Built a pixel-perfect clone of the Fanbase social platform with a responsive UI. Implemented user profiles, post interactions, and real-time updates.",
+      "Close, responsive recreation of the Fanbase social app's interface, built to practise component design, profile and post screens, and live-updating feeds.",
     image: "/projects/fanbase.png",
-    tags: ["React.js", "Tailwind CSS", "Responsive Design"],
+    tags: ["React.js", "Tailwind CSS"],
     links: [{ label: "Live Website", url: "https://www.fanbase.app/" }],
-  },
-  {
-    title: "Web-Based Diabetes Prediction",
-    description:
-      "Built a full-stack application using multiple machine learning models for accurate diabetes prediction. Designed an intuitive UI with Tailwind CSS and secure user authentication.",
-    image: "/projects/diabetes_pred.png",
-    tags: ["React.js", "Python", "Express.js", "MongoDB"],
   },
 ];
 
-export const FILTERS = ["All", "React.js", "MongoDB", "AI", "Tailwind CSS"] as const;
+export const FILTERS = ["All", "AI", "Next.js", "React.js", "Full Stack", "TypeScript"] as const;
 
 export const TECH = [
-  "React.js", "TypeScript", "Next.js", "Redux", "Context API",
-  "Tailwind CSS", "Bootstrap", "Framer Motion", "Node.js", "Express.js",
-  "Spring Boot", "REST APIs", "MongoDB", "Firebase", "MySQL", "Git",
-  "GitHub", "Postman", "VS Code", "Figma", "Canva", "ElevenLabs", "Stripe", "WordPress"
+  "React.js", "Next.js", "TypeScript", "JavaScript (ES6+)", "Redux", "Tailwind CSS",
+  "Framer Motion", "Node.js", "Express.js", "Supabase", "REST APIs", "MongoDB",
+  "MySQL", "Firebase", "Claude API", "ElevenLabs", "MCP", "Stripe", "Git & GitHub",
+  "Postman", "Figma", "WordPress",
 ];
 
 export const CONTACT = {
   phone: "+92 348 9363432",
   email: "muhammadishaqchd622@gmail.com",
   location: "Islamabad, Pakistan",
+  github: "https://github.com/Muhammad-ishaq-D",
+  linkedin: "https://www.linkedin.com/in/muhammad-ishaq-407a65319/",
+  resume: "https://drive.google.com/file/d/1LBspAf-UNPJON5VF1r8oHtDnSxnf5_6_/view?usp=sharing",
+};
+
+export const PROFILE = {
+  name: "Muhammad Ishaq",
+  title: "Full Stack Developer",
+  tagline: "Full Stack Developer building AI-powered web products",
+  summary:
+    "I build AI-powered web products for healthcare, insurance and retail. My work covers streaming AI chat and voice assistants, booking and payment flows, and the dashboards teams use every day. I care most about fast, polished interfaces and code that other developers can easily work on.",
 };
 
 export type Experience = {
@@ -94,47 +138,47 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
+    period: "Jul 2025 — Present",
+    role: "Frontend Developer",
+    company: "INSTLY Technologies",
+    place: "Bangkok, Thailand · Remote, Full-Time",
+    points: [
+      "Build AI products for healthcare and insurance clients, including Cira, Expat Medicare and Stellar OS.",
+      "Built Claude-powered chat assistants that stream answers in real time, and an ElevenLabs voice assistant for patient conversations.",
+      "Turn complex designs into responsive landing pages and data-heavy dashboards, working closely with designers and backend engineers.",
+      "Received INSTLY's Certificate of Excellence (February 2026).",
+    ],
+  },
+  {
     period: "Jan 2026 — Present",
     role: "Full Stack Developer (MERN)",
     company: "CODEHAVEN Solutions",
-    place: "Islamabad, Pakistan (Onsite, Part-Time)",
+    place: "Islamabad, Pakistan · Onsite, Part-Time",
     points: [
-      "Build and maintain web applications using the MERN stack along with MySQL, writing clean, scalable front-end and back-end code.",
-      "Design and integrate RESTful APIs, and collaborate with UI/UX designers to deliver responsive, intuitive, and user-friendly interfaces.",
-      "Test, debug, and optimize applications for performance and security, following best practices in version control and architecture.",
+      "Build client web applications from start to finish with MongoDB, Express, React, Node.js and MySQL.",
+      "Design and connect REST APIs, and turn UI/UX designs into responsive, accessible interfaces.",
+      "Test, debug and tune applications for speed and security, following team code-review and Git workflows.",
     ],
   },
   {
-    period: "July 2025 — Present",
-    role: "Frontend Developer",
-    company: "INSTLY Technologies",
-    place: "Bangkok City, Thailand (Remote, Full-Time)",
-    points: [
-      "Working on AI assistant–based projects, focusing on building complex and visually appealing landing pages as well as dynamic dashboards.",
-      "Currently building intelligent AI assistant with voice and chat capabilities.",
-      "Collaborating with designers and backend developers to deliver seamless user experiences and responsive layouts.",
-    ],
-  },
-  {
-    period: "April 2025 — July 2025",
+    period: "Apr 2025 — Jul 2025",
     role: "Frontend Developer Intern",
-    company: "Appaura.net",
+    company: "Appaura",
     place: "Lahore, Pakistan",
     points: [
-      "Developed and maintained responsive web applications using React.js, REST APIs, Spring Boot, and MongoDB.",
-      "Collaborated with designers and backend teams to ensure seamless integration and built efficient CRUD-based APIs.",
-      "Optimized applications for performance and scalability under senior mentorship.",
+      "Built the Appaura analytics dashboard in React, connected to Supabase REST APIs and MongoDB.",
+      "Built CRUD features across the frontend and backend together with the design and backend teams.",
+      "Improved rendering speed and component structure with guidance from senior engineers.",
     ],
   },
   {
     period: "Nov 2023 — Mar 2025",
-    role: "Frontend Developer (Self Work)",
-    company: "Freelance / Personal Projects",
+    role: "Freelance Full Stack Developer",
+    company: "Self-Employed",
     place: "Remote",
     points: [
-      "Designed and built multiple projects using the MERN stack, focusing on clean code and reusable components.",
-      "Enhanced performance and user experience through effective state management and responsive design techniques.",
-      "Explored AI integration in web applications to keep up with modern development trends.",
+      "Built and shipped a range of MERN-stack projects, with a focus on reusable components, state management and responsive design.",
+      "Built my first AI-integrated features, which led to my current work on AI products.",
     ],
   },
 ];
@@ -151,54 +195,57 @@ export const EDUCATION: EducationItem[] = [
   {
     degree: "BS Software Engineering",
     school: "Islamia College University, Peshawar",
-    date: "Sep 2020 — July 2024",
+    date: "Sep 2020 — Jul 2024",
     description:
-      "Graduated with a CGPA of 3.72/4.00. Strong focus on software engineering principles, web development, and modern technologies.",
-    tags: ["Software Engineering", "Web Development", "Databases"],
+      "Graduated with a CGPA of 3.72/4.00. The degree focused on software engineering principles, databases and web development.",
+    tags: ["CGPA 3.72 / 4.00", "Software Engineering", "Web Development", "Databases"],
   },
 ];
 
 export type Certification = { title: string; issuer: string; year: string };
 
 export const CERTIFICATIONS: Certification[] = [
-  { title: "Complete React Development Course", issuer: "Zero To Mastery Online, Udemy", year: "July 2025" },
-  { title: "WordPress Course", issuer: "DevTech Institute Lahore, Pakistan", year: "Sep 2023" },
+  { title: "Complete Web Developer", issuer: "Zero To Mastery · Udemy", year: "Jul 2025" },
+  { title: "Meta Front-End Developer Professional Certificate", issuer: "Meta · Coursera", year: "Aug 2023" },
+  { title: "WordPress Development", issuer: "DevTech Institute, Lahore", year: "Sep 2023" },
 ];
 
-export const COURSES: { title: string; issuer: string }[] = [
-  { title: "Complete React Development", issuer: "Udemy" },
-  { title: "WordPress Development", issuer: "DevTech Institute" },
+export type SkillLevel = "Expert" | "Advanced" | "Proficient";
+
+export const PROFICIENCY: { label: string; level: SkillLevel; detail: string }[] = [
+  { label: "React & Next.js", level: "Expert", detail: "I use them every day, in production" },
+  { label: "TypeScript & Tailwind CSS", level: "Expert", detail: "The default for every project I build" },
+  { label: "AI Integration", level: "Advanced", detail: "Streaming LLM chat, voice assistants" },
+  { label: "Node.js & REST APIs", level: "Advanced", detail: "Authentication, payments, admin panels" },
+  { label: "Databases", level: "Proficient", detail: "MongoDB, MySQL, Firebase" },
 ];
 
-export const PROFICIENCY: { label: string; value: number }[] = [
-  { label: "Frontend", value: 95 },
-  { label: "React / Next.js", value: 92 },
-  { label: "Backend / MERN", value: 85 },
-  { label: "AI Integration", value: 80 },
-  { label: "UI / UX / Tailwind", value: 90 },
-];
-
-export type SkillGroup = { icon: string; title: string; skills: string[] };
+export type SkillGroup = { icon: "frontend" | "backend" | "ai" | "tools"; title: string; skills: string[] };
 
 export const SKILL_GROUPS: SkillGroup[] = [
   {
-    icon: "💻",
-    title: "Frontend Development",
+    icon: "frontend",
+    title: "Frontend",
     skills: ["React.js", "Next.js", "TypeScript", "Redux", "Context API", "Tailwind CSS", "Framer Motion"],
   },
   {
-    icon: "🔧",
-    title: "Backend & Databases",
-    skills: ["Node.js", "Express.js", "Spring Boot", "MongoDB", "MySQL", "Firebase", "REST APIs"],
+    icon: "backend",
+    title: "Backend & Data",
+    skills: ["Node.js", "Express.js", "Supabase", "REST APIs", "MongoDB", "MySQL", "Firebase"],
   },
   {
-    icon: "🎨",
-    title: "Tools & Platforms",
-    skills: ["Git", "GitHub", "Figma", "VS Code", "Postman", "Stripe", "ElevenLabs"],
+    icon: "ai",
+    title: "AI & Integrations",
+    skills: ["Claude API", "Streaming Chat", "ElevenLabs Voice", "Shen.AI", "MCP (Model Context Protocol)", "Stripe", "OAuth / JWT"],
+  },
+  {
+    icon: "tools",
+    title: "Tools & Workflow",
+    skills: ["Git", "GitHub", "Postman", "Figma", "VS Code", "WordPress"],
   },
 ];
 
-export const LANGUAGES: { label: string; value: number }[] = [
-  { label: "English", value: 85 },
-  { label: "Urdu", value: 100 },
+export const LANGUAGES: { label: string; level: string }[] = [
+  { label: "English", level: "Professional working proficiency" },
+  { label: "Urdu", level: "Native" },
 ];

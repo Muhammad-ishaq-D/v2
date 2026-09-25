@@ -4,7 +4,7 @@ import { EXPERIENCE } from "@/lib/portfolio-data";
 
 export function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-5xl px-6 py-24">
+    <section id="experience" className="mx-auto max-w-6xl px-6 py-24">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

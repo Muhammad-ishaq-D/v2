@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Loader2, Phone, Send } from "lucide-react";
+import { Check, Github, Linkedin, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { z } from "zod";
 import { CONTACT } from "@/lib/portfolio-data";
 import { Magnetic } from "@/components/Magnetic";
 
 // To go live: create a free form at https://formspree.io and paste the endpoint here.
+// Until then, the form opens the visitor's email client with the message pre-filled.
 const FORMSPREE_ENDPOINT = "";
 
 const schema = z.object({
@@ -48,13 +49,17 @@ export function Contact() {
     setStatus("sending");
     try {
       if (FORMSPREE_ENDPOINT) {
-        await fetch(FORMSPREE_ENDPOINT, {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(result.data),
         });
+        if (!res.ok) throw new Error("Failed to send");
       } else {
-        await new Promise((r) => setTimeout(r, 1200));
+        const { name, email, message } = result.data;
+        const subject = encodeURIComponent(`Project enquiry from ${name}`);
+        const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+        window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
       }
       setStatus("success");
       setValues({ name: "", email: "", message: "" });
@@ -81,12 +86,43 @@ export function Contact() {
       >
         <p className="text-sm font-medium uppercase tracking-[0.3em] text-gradient">Contact</p>
         <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">Let's build something</h2>
-        <a
-          href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-          className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <Phone className="h-4 w-4" /> {CONTACT.phone}
-        </a>
+        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+          Have a product idea, a feature your team needs, or a full-time role? Tell me about it. I usually reply within 24 hours.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
+          <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
+            <Mail className="h-4 w-4" /> {CONTACT.email}
+          </a>
+          <a
+            href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
+            className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+          >
+            <Phone className="h-4 w-4" /> {CONTACT.phone}
+          </a>
+          <span className="inline-flex items-center gap-2">
+            <MapPin className="h-4 w-4" /> {CONTACT.location}
+          </span>
+        </div>
+        <div className="mt-5 flex justify-center gap-3">
+          <a
+            href={CONTACT.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="glass flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:text-[var(--glow)]"
+          >
+            <Github className="h-4 w-4" />
+          </a>
+          <a
+            href={CONTACT.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="glass flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:text-[var(--glow)]"
+          >
+            <Linkedin className="h-4 w-4" />
+          </a>
+        </div>
       </motion.div>
 
       <form onSubmit={submit} className="glass glow-border space-y-5 rounded-3xl p-7">
@@ -150,7 +186,7 @@ export function Contact() {
               )}
               {status === "success" && (
                 <motion.span key="success" className="flex items-center gap-2" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
-                  Message sent! <Check className="h-4 w-4" />
+                  {FORMSPREE_ENDPOINT ? "Message sent!" : "Opening your email…"} <Check className="h-4 w-4" />
                 </motion.span>
               )}
             </AnimatePresence>

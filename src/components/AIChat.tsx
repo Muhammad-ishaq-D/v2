@@ -6,14 +6,28 @@ import { Send, X, MessageCircle, ExternalLink } from "lucide-react";
 import avatar from "@/assets/avatar.png";
 
 const SUGGESTIONS = [
-  "Tell me about yourself?",
+  "What AI products have you built?",
   "What's your tech stack?",
-  "How can I contact you?",
+  "Are you available for work?",
+  "Can I see your resume?",
 ];
 
 export function AIChat() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  // On phones the launcher would cover the hero, so it appears once the visitor starts scrolling.
+  const [launcherVisible, setLauncherVisible] = useState(false);
+
+  useEffect(() => {
+    const update = () => setLauncherVisible(window.innerWidth >= 640 || window.scrollY > 240);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, status } = useChat({
@@ -35,11 +49,15 @@ export function AIChat() {
   return (
     <>
       {/* Launcher */}
-      <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-3">
+      <div
+        className={`fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-3 transition-all duration-300 ${
+          launcherVisible || open ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
+        }`}
+      >
         <motion.button
           data-cursor="Chat"
           onClick={() => setOpen((o) => !o)}
-          className="group relative flex items-center gap-2.5 rounded-full bg-gradient-to-br from-[var(--glow)] to-[var(--glow-2)] py-2 pl-2 pr-4 text-background shadow-lg shadow-[var(--glow)]/30"
+          className="group relative flex items-center gap-2.5 rounded-full bg-gradient-to-br from-[var(--glow)] to-[var(--glow-2)] p-1.5 sm:py-2 sm:pl-2 sm:pr-4 text-background shadow-lg shadow-[var(--glow)]/30"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
           aria-label={open ? "Close chat" : "Chat with Ishaq"}
@@ -47,8 +65,8 @@ export function AIChat() {
           {!open && (
             <motion.span
               className="pointer-events-none absolute inset-0 rounded-full bg-[var(--glow)]"
-              animate={{ opacity: [0.5, 0], scale: [1, 1.5] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+              animate={{ opacity: [0.35, 0], scale: [1, 1.25] }}
+              transition={{ duration: 2.4, repeat: 3, repeatDelay: 1.5, ease: "easeOut" }}
             />
           )}
           <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full ring-2 ring-background/40">
@@ -77,7 +95,7 @@ export function AIChat() {
             </AnimatePresence>
           </span>
           {!open && (
-            <span className="relative flex items-center gap-1.5 pr-1 text-sm font-semibold">
+            <span className="relative hidden items-center gap-1.5 pr-1 text-sm font-semibold sm:flex">
               <MessageCircle className="h-4 w-4" />
               Chat with me
             </span>
@@ -100,8 +118,8 @@ export function AIChat() {
                 <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-emerald-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold">Ishaq</p>
-                <p className="text-xs text-emerald-400">Online · ask me anything</p>
+                <p className="text-sm font-semibold">Ask Ishaq</p>
+                <p className="text-xs text-emerald-400">AI assistant · answers about my work</p>
               </div>
             </div>
 
@@ -112,7 +130,7 @@ export function AIChat() {
               {messages.length === 0 && (
                 <div className="space-y-3">
                   <p className="text-sm text-muted-foreground">
-                    Hi! I'm Muhammad. Ask me anything about my skills or projects.
+                    Hi, I'm Ishaq's AI assistant. Ask me about my projects, experience or availability. For anything else, email me directly.
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {SUGGESTIONS.map((s) => (
