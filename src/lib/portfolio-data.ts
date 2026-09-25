@@ -6,6 +6,8 @@ export type Project = {
   /** Custom cover image; when set it is used instead of the linked site's preview image. */
   cover?: string;
   tags: string[];
+  /** Headline numbers shown on the card. Only use real, verifiable figures. */
+  results?: { value: string; label: string }[];
   links?: { label: string; url: string }[];
 };
 
@@ -17,6 +19,11 @@ export const PROJECTS: Project[] = [
       "International health insurance comparison platform for expats, in English, French and Spanish. It compares 1,000+ plans from 30+ insurers and gives personalised quotes in real time. I built Mira, an AI adviser that streams answers from the Claude API, and the analytics dashboard the team uses to track live traffic and ad performance.",
     image: "/projects/country.png",
     tags: ["Next.js", "TypeScript", "AI", "Full Stack"],
+    results: [
+      { value: "1,000+", label: "Plans compared" },
+      { value: "30+", label: "Insurers" },
+      { value: "3", label: "Languages" },
+    ],
     links: [{ label: "Live Website", url: "https://expatmedicare.com/" }],
   },
   {
@@ -26,6 +33,10 @@ export const PROJECTS: Project[] = [
       "AI health platform that connects patients with real doctors for consultations, prescription refills and specialist referrals. I built the streaming Claude chat, the ElevenLabs voice assistant and camera-based vital-sign scanning with Shen.AI, plus an SEO-optimised marketing site in 5 languages.",
     image: "/projects/country.png",
     tags: ["Next.js", "TypeScript", "AI", "Full Stack"],
+    results: [
+      { value: "3", label: "AI integrations" },
+      { value: "5", label: "Languages" },
+    ],
     links: [{ label: "Live Website", url: "https://askainurse.com/" }],
   },
   {
@@ -35,6 +46,7 @@ export const PROJECTS: Project[] = [
       "Operations platform that insurers, brokers and internal teams use to manage 1,000+ plans, pricing zones, group quotes, renewals and leads. I built the data-heavy dashboard screens and the marketing experience, including interactive 3D Spline scenes and Framer Motion transitions.",
     image: "/projects/country.png",
     tags: ["React.js", "Tailwind CSS", "Framer Motion", "Full Stack"],
+    results: [{ value: "1,000+", label: "Plans managed" }],
     links: [{ label: "Live Website", url: "https://stellaros.ai/" }],
   },
   {
@@ -249,3 +261,8 @@ export const LANGUAGES: { label: string; level: string }[] = [
   { label: "English", level: "Professional working proficiency" },
   { label: "Urdu", level: "Native" },
 ];
+
+export type Testimonial = { quote: string; name: string; role: string; company: string };
+
+/** Real quotes only, with the person's permission. The section stays hidden while this is empty. */
+export const TESTIMONIALS: Testimonial[] = [];

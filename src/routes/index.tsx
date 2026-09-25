@@ -11,6 +11,7 @@ import { Education } from "@/components/sections/Education";
 import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { AIChat } from "@/components/AIChat";
 import { CONTACT } from "@/lib/portfolio-data";
 
@@ -58,6 +59,7 @@ function Index() {
         <Hero key={ready ? "ready" : "initial"} />
         <BentoAbout />
         <Projects />
+        <Testimonials />
         <Experience />
         <Skills />
         <Education />

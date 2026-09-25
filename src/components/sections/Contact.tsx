@@ -7,7 +7,7 @@ import { Magnetic } from "@/components/Magnetic";
 
 // To go live: create a free form at https://formspree.io and paste the endpoint here.
 // Until then, the form opens the visitor's email client with the message pre-filled.
-const FORMSPREE_ENDPOINT = "";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/meaolzgb";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(80),
@@ -138,18 +138,16 @@ export function Contact() {
                 value={values[f.name]}
                 onChange={(e) => update(f.name, e.target.value)}
                 rows={4}
-                className={`w-full resize-none rounded-xl border bg-secondary/30 px-4 py-3 text-sm outline-none transition-colors focus:border-[var(--glow)] ${
-                  errors[f.name] ? "border-destructive" : "border-border"
-                }`}
+                className={`w-full resize-none rounded-xl border bg-secondary/30 px-4 py-3 text-sm outline-none transition-colors focus:border-[var(--glow)] ${errors[f.name] ? "border-destructive" : "border-border"
+                  }`}
               />
             ) : (
               <input
                 type={f.type || "text"}
                 value={values[f.name]}
                 onChange={(e) => update(f.name, e.target.value)}
-                className={`w-full rounded-xl border bg-secondary/30 px-4 py-3 text-sm outline-none transition-colors focus:border-[var(--glow)] ${
-                  errors[f.name] ? "border-destructive" : "border-border"
-                }`}
+                className={`w-full rounded-xl border bg-secondary/30 px-4 py-3 text-sm outline-none transition-colors focus:border-[var(--glow)] ${errors[f.name] ? "border-destructive" : "border-border"
+                  }`}
               />
             )}
             <AnimatePresence>

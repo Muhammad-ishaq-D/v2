@@ -83,6 +83,16 @@ export function Projects() {
                 </div>
                 <p className="mt-1 text-xs font-medium uppercase tracking-widest text-[var(--glow)]">{p.role}</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                {p.results && (
+                  <dl className="mt-5 grid grid-cols-3 gap-2">
+                    {p.results.map((r) => (
+                      <div key={r.label} className="flex flex-col-reverse rounded-2xl border border-border bg-secondary/30 px-3 py-2.5">
+                        <dt className="text-[11px] uppercase tracking-wider text-muted-foreground">{r.label}</dt>
+                        <dd className="font-display text-lg font-bold text-foreground">{r.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
                 {p.links && (
                   <div className="mt-4 flex flex-wrap gap-3">
                     {p.links.map((link) => (
