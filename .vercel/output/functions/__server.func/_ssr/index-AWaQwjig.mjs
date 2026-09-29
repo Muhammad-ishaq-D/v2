@@ -1,10 +1,10 @@
 import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { L as Lenis } from "../_libs/lenis.mjs";
-import { C as CONTACT, a as PROFILE, E as EXPERIENCE, b as EDUCATION, T as TECH, P as PROJECTS, F as FILTERS, d as PROFICIENCY, S as SKILL_GROUPS, L as LANGUAGES, c as CERTIFICATIONS } from "./router-CVI2ntDV.mjs";
+import { C as CONTACT, a as PROFILE, E as EXPERIENCE, b as EDUCATION, T as TECH, P as PROJECTS, F as FILTERS, e as TESTIMONIALS, d as PROFICIENCY, S as SKILL_GROUPS, L as LANGUAGES, c as CERTIFICATIONS } from "./router-8YbxIcDQ.mjs";
 import { u as useChat } from "../_libs/ai-sdk__react.mjs";
 import { D as DefaultChatTransport } from "../_libs/ai.mjs";
 import { A as AnimatePresence, m as motion, u as useMotionValue, a as useSpring, b as useTransform, c as useReducedMotion } from "../_libs/framer-motion.mjs";
-import { D as Download, X, M as Menu, A as ArrowRight, G as Github, L as Linkedin, B as Briefcase, a as GraduationCap, b as MapPin, R as Rocket, S as Sparkles, Z as Zap, E as Earth, c as ArrowUpRight, W as Wrench, d as Bot, e as Server, C as CodeXml, f as Award, g as Mail, P as Phone, h as Send, i as LoaderCircle, j as Check, k as MessageCircle, l as Layers, m as GitBranch, n as Mouse, o as ExternalLink } from "../_libs/lucide-react.mjs";
+import { D as Download, X, M as Menu, A as ArrowRight, B as Briefcase, G as GraduationCap, a as MapPin, R as Rocket, S as Sparkles, Z as Zap, E as Earth, b as ArrowUpRight, Q as Quote, W as Wrench, c as Bot, d as Server, C as CodeXml, e as Award, f as Mail, P as Phone, g as Github, L as Linkedin, h as Send, i as LoaderCircle, j as Check, k as MessageCircle, l as Layers, m as GitBranch, n as Mouse, o as ExternalLink } from "../_libs/lucide-react.mjs";
 import { o as object, a as string } from "../_libs/zod.mjs";
 import "../_libs/tanstack__query-core.mjs";
 import "../_libs/tanstack__react-query.mjs";
@@ -710,14 +710,7 @@ function MobileAvatar() {
             height: 1024,
             className: "h-24 w-24 rounded-full border-4 border-background object-cover object-top [@media(max-height:700px)]:h-20 [@media(max-height:700px)]:w-20 sm:h-28 sm:w-28"
           }
-        ) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "span",
-          {
-            className: "status-dot absolute bottom-1.5 right-1.5 h-4 w-4 rounded-full border-[3px] border-background",
-            style: { background: "oklch(0.78 0.18 150)" }
-          }
-        )
+        ) })
       ]
     }
   );
@@ -842,31 +835,7 @@ function Hero() {
                   className: "trace-border glass inline-flex items-center rounded-full px-7 py-3 text-sm font-semibold",
                   children: "Get in Touch"
                 }
-              ) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden items-center gap-2 sm:flex", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "a",
-                  {
-                    href: CONTACT.github,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                    "aria-label": "GitHub",
-                    className: "glass flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground",
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(Github, { className: "h-4 w-4" })
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "a",
-                  {
-                    href: CONTACT.linkedin,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                    "aria-label": "LinkedIn",
-                    className: "glass flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground",
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(Linkedin, { className: "h-4 w-4" })
-                  }
-                )
-              ] })
+              ) })
             ]
           }
         ),
@@ -1202,7 +1171,7 @@ function Projects() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "img",
               {
-                src: p.links?.[0]?.url ? `/api/og?url=${encodeURIComponent(p.links[0].url)}` : p.image,
+                src: p.cover ?? (p.links?.[0]?.url ? `/api/og?url=${encodeURIComponent(p.links[0].url)}` : p.image),
                 alt: p.title,
                 loading: "lazy",
                 onError: (e) => {
@@ -1223,6 +1192,10 @@ function Projects() {
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-xs font-medium uppercase tracking-widest text-[var(--glow)]", children: p.role }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3 text-sm leading-relaxed text-muted-foreground", children: p.description }),
+            p.results && /* @__PURE__ */ jsxRuntimeExports.jsx("dl", { className: "mt-5 grid grid-cols-3 gap-2", children: p.results.map((r) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col-reverse rounded-2xl border border-border bg-secondary/30 px-3 py-2.5", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("dt", { className: "text-[11px] uppercase tracking-wider text-muted-foreground", children: r.label }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("dd", { className: "font-display text-lg font-bold text-foreground", children: r.value })
+            ] }, r.label)) }),
             p.links && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4 flex flex-wrap gap-3", children: p.links.map((link) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "a",
               {
@@ -1274,7 +1247,7 @@ function Projects() {
     ) })
   ] });
 }
-const FORMSPREE_ENDPOINT = "";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/meaolzgb";
 const schema = object({
   name: string().trim().min(2, "Name must be at least 2 characters").max(80),
   email: string().trim().email("Enter a valid email address").max(160),
@@ -1307,14 +1280,13 @@ function Contact() {
     }
     setStatus("sending");
     try {
-      if (FORMSPREE_ENDPOINT) ;
-      else {
-        const { name, email, message } = result.data;
-        const subject = encodeURIComponent(`Project enquiry from ${name}`);
-        const body = encodeURIComponent(`${message}
-
-— ${name} (${email})`);
-        window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+      if (FORMSPREE_ENDPOINT) {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(result.data)
+        });
+        if (!res.ok) throw new Error("Failed to send");
       }
       setStatus("success");
       setValues({ name: "", email: "", message: "" });
@@ -1447,7 +1419,7 @@ function Contact() {
               /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "h-4 w-4 animate-spin" })
             ] }, "sending"),
             status === "success" && /* @__PURE__ */ jsxRuntimeExports.jsxs(motion.span, { className: "flex items-center gap-2", initial: { opacity: 0, scale: 0.8 }, animate: { opacity: 1, scale: 1 }, exit: { opacity: 0 }, children: [
-              "Opening your email…",
+              "Message sent!",
               " ",
               /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "h-4 w-4" })
             ] }, "success")
@@ -1455,6 +1427,52 @@ function Contact() {
         }
       ) })
     ] })
+  ] });
+}
+function Testimonials() {
+  if (TESTIMONIALS.length === 0) return null;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { id: "testimonials", className: "mx-auto max-w-6xl px-6 py-24", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      motion.div,
+      {
+        initial: { opacity: 0, y: 24 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-80px" },
+        transition: { duration: 0.6 },
+        className: "mb-10",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium uppercase tracking-[0.3em] text-gradient", children: "Testimonials" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-3 font-display text-4xl font-bold sm:text-5xl", children: "What people say" })
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid gap-5 md:grid-cols-2", children: TESTIMONIALS.map((t, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      motion.figure,
+      {
+        initial: { opacity: 0, y: 24 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-60px" },
+        transition: { duration: 0.5, delay: i * 0.1 },
+        className: "glass glow-border flex flex-col rounded-3xl p-7",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Quote, { className: "mb-4 h-7 w-7 text-[var(--glow)]" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("blockquote", { className: "flex-1 leading-relaxed text-foreground", children: [
+            "“",
+            t.quote,
+            "”"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("figcaption", { className: "mt-6 border-t border-border pt-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-semibold", children: t.name }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground", children: [
+              t.role,
+              ", ",
+              t.company
+            ] })
+          ] })
+        ]
+      },
+      t.name
+    )) })
   ] });
 }
 const SUGGESTIONS = [
@@ -1686,6 +1704,7 @@ function Index() {
       /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}, ready ? "ready" : "initial"),
       /* @__PURE__ */ jsxRuntimeExports.jsx(BentoAbout, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Projects, {}),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Testimonials, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Experience, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Skills, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Education, {}),

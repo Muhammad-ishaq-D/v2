@@ -14,7 +14,7 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     title: "Expat Medicare",
-    role: "Built at INSTLY Technologies",
+    role: "Built at ALPHA",
     description:
       "International health insurance comparison platform for expats, in English, French and Spanish. It compares 1,000+ plans from 30+ insurers and gives personalised quotes in real time. I built Mira, an AI adviser that streams answers from the Claude API, and the analytics dashboard the team uses to track live traffic and ad performance.",
     image: "/projects/country.png",
@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Cira — AI Healthcare Assistant",
-    role: "Built at INSTLY Technologies",
+    role: "Built at ALPHA",
     description:
       "AI health platform that connects patients with real doctors for consultations, prescription refills and specialist referrals. I built the streaming Claude chat, the ElevenLabs voice assistant and camera-based vital-sign scanning with Shen.AI, plus an SEO-optimised marketing site in 5 languages.",
     image: "/projects/country.png",
@@ -41,13 +41,23 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Stellar OS",
-    role: "Built at INSTLY Technologies",
+    role: "Built at ALPHA",
     description:
       "Operations platform that insurers, brokers and internal teams use to manage 1,000+ plans, pricing zones, group quotes, renewals and leads. I built the data-heavy dashboard screens and the marketing experience, including interactive 3D Spline scenes and Framer Motion transitions.",
     image: "/projects/country.png",
     tags: ["React.js", "Tailwind CSS", "Framer Motion", "Full Stack"],
     results: [{ value: "1,000+", label: "Plans managed" }],
     links: [{ label: "Live Website", url: "https://stellaros.ai/" }],
+  },
+  {
+    title: "Ask Stellar — AI Health Insurance Assistant",
+    role: "Built at Instly",
+    cover: "/projects/ask-stellar.png",
+    description:
+      "AI health insurance assistant that answers questions in plain English, compares plans side by side and explains what is and isn't covered. I built the complex landing pages and dashboards, with responsive layouts, smooth Framer Motion animations and interactive 3D Spline scenes, working closely with designers and backend developers.",
+    image: "/projects/country.png",
+    tags: ["React.js", "Tailwind CSS", "Framer Motion", "AI"],
+    links: [{ label: "Live Website", url: "https://askstellarai.com/" }],
   },
   {
     title: "Courses4Me",
@@ -129,7 +139,7 @@ export const CONTACT = {
   location: "Islamabad, Pakistan",
   github: "https://github.com/Muhammad-ishaq-D",
   linkedin: "https://www.linkedin.com/in/muhammad-ishaq-407a65319/",
-  resume: "https://drive.google.com/file/d/1LBspAf-UNPJON5VF1r8oHtDnSxnf5_6_/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1cc98w_yelP71Q5UpvG7VFNMsWd59fdQd/view?usp=sharing",
 };
 
 export const PROFILE = {
@@ -150,15 +160,26 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
-    period: "Jul 2025 — Present",
+    period: "Jul 2026 — Present",
+    role: "Full Stack Developer",
+    company: "ALPHA",
+    place: "Full-Time",
+    points: [
+      "Build AI-powered healthcare and insurance products, including Expat Medicare, Cira and Stellar OS.",
+      "Build Claude-powered chat assistants that stream answers in real time, and an ElevenLabs voice assistant for patient conversations.",
+      "Develop features across the frontend and backend with Next.js and TypeScript, from multilingual marketing sites to analytics dashboards.",
+    ],
+  },
+  {
+    period: "Jul 2025 — Jul 2026",
     role: "Frontend Developer",
-    company: "INSTLY Technologies",
+    company: "Instly",
     place: "Bangkok, Thailand · Remote, Full-Time",
     points: [
-      "Build AI products for healthcare and insurance clients, including Cira, Expat Medicare and Stellar OS.",
-      "Built Claude-powered chat assistants that stream answers in real time, and an ElevenLabs voice assistant for patient conversations.",
-      "Turn complex designs into responsive landing pages and data-heavy dashboards, working closely with designers and backend engineers.",
-      "Received INSTLY's Certificate of Excellence (February 2026).",
+      "Built Ask Stellar, an AI health insurance assistant that answers questions in plain English and compares plans side by side.",
+      "Turned complex designs into responsive landing pages and data-heavy dashboards, with Framer Motion animations and 3D Spline scenes.",
+      "Worked closely with designers and backend engineers to ship features quickly and reliably.",
+      "Received Instly's Certificate of Excellence (February 2026).",
     ],
   },
   {

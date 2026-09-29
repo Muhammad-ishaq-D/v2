@@ -27,7 +27,7 @@ import "path";
 import "fs";
 import "os";
 import "../_libs/opentelemetry__api.mjs";
-const appCss = "/assets/styles-DYH8mFL-.css";
+const appCss = "/assets/styles-DN6Dhruc.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -45,25 +45,19 @@ function reportLovableError(error, context = {}) {
   );
 }
 function NotFoundComponent() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", {
-    className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", {
-      className: "max-w-md text-center", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-md text-center", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-7xl font-bold text-foreground", children: "404" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-4 text-xl font-semibold text-foreground", children: "Page not found" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground", children: "The page you're looking for doesn't exist or has been moved." }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", {
-        className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Link,
-          {
-            to: "/",
-            className: "inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
-            children: "Go home"
-          }
-        )
-      })
-      ]
-    })
-  });
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Link,
+      {
+        to: "/",
+        className: "inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
+        children: "Go home"
+      }
+    ) })
+  ] }) });
 }
 function ErrorComponent({ error, reset }) {
   console.error(error);
@@ -71,37 +65,31 @@ function ErrorComponent({ error, reset }) {
   reactExports.useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", {
-    className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", {
-      className: "max-w-md text-center", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-md text-center", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-xl font-semibold tracking-tight text-foreground", children: "This page didn't load" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground", children: "Something went wrong on our end. You can try refreshing or head back home." }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", {
-        className: "mt-6 flex flex-wrap justify-center gap-2", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 flex flex-wrap justify-center gap-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            onClick: () => {
-              router2.invalidate();
-              reset();
-            },
-            className: "inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
-            children: "Try again"
-          }
-        ),
+        "button",
+        {
+          onClick: () => {
+            router2.invalidate();
+            reset();
+          },
+          className: "inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
+          children: "Try again"
+        }
+      ),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "a",
-          {
-            href: "/",
-            className: "inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent",
-            children: "Go home"
-          }
-        )
-        ]
-      })
-      ]
-    })
-  });
+        "a",
+        {
+          href: "/",
+          className: "inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent",
+          children: "Go home"
+        }
+      )
+    ] })
+  ] }) });
 }
 const Route$4 = createRootRouteWithContext()({
   head: () => ({
@@ -142,17 +130,13 @@ const Route$4 = createRootRouteWithContext()({
   errorComponent: ErrorComponent
 });
 function RootShell({ children }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("html", {
-    lang: "en", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("html", { lang: "en", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("head", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(HeadContent, {}) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("body", {
-      children: [
-        children,
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("body", { children: [
+      children,
       /* @__PURE__ */ jsxRuntimeExports.jsx(Scripts, {})
-      ]
-    })
-    ]
-  });
+    ] })
+  ] });
 }
 function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
@@ -191,7 +175,7 @@ const Route$3 = createFileRoute("/sitemap.xml")({
     }
   }
 });
-const $$splitComponentImporter = () => import("./index-B_up5bTA.mjs");
+const $$splitComponentImporter = () => import("./index-AWaQwjig.mjs");
 const SITE_URL = "https://m-ishaq-portfolio-v3.vercel.app";
 const Route$2 = createFileRoute("/")({
   head: () => ({
@@ -256,6 +240,11 @@ const PROJECTS = [
     description: "International health insurance comparison platform for expats, in English, French and Spanish. It compares 1,000+ plans from 30+ insurers and gives personalised quotes in real time. I built Mira, an AI adviser that streams answers from the Claude API, and the analytics dashboard the team uses to track live traffic and ad performance.",
     image: "/projects/country.png",
     tags: ["Next.js", "TypeScript", "AI", "Full Stack"],
+    results: [
+      { value: "1,000+", label: "Plans compared" },
+      { value: "30+", label: "Insurers" },
+      { value: "3", label: "Languages" }
+    ],
     links: [{ label: "Live Website", url: "https://expatmedicare.com/" }]
   },
   {
@@ -264,6 +253,10 @@ const PROJECTS = [
     description: "AI health platform that connects patients with real doctors for consultations, prescription refills and specialist referrals. I built the streaming Claude chat, the ElevenLabs voice assistant and camera-based vital-sign scanning with Shen.AI, plus an SEO-optimised marketing site in 5 languages.",
     image: "/projects/country.png",
     tags: ["Next.js", "TypeScript", "AI", "Full Stack"],
+    results: [
+      { value: "3", label: "AI integrations" },
+      { value: "5", label: "Languages" }
+    ],
     links: [{ label: "Live Website", url: "https://askainurse.com/" }]
   },
   {
@@ -272,6 +265,7 @@ const PROJECTS = [
     description: "Operations platform that insurers, brokers and internal teams use to manage 1,000+ plans, pricing zones, group quotes, renewals and leads. I built the data-heavy dashboard screens and the marketing experience, including interactive 3D Spline scenes and Framer Motion transitions.",
     image: "/projects/country.png",
     tags: ["React.js", "Tailwind CSS", "Framer Motion", "Full Stack"],
+    results: [{ value: "1,000+", label: "Plans managed" }],
     links: [{ label: "Live Website", url: "https://stellaros.ai/" }]
   },
   {
@@ -301,6 +295,7 @@ const PROJECTS = [
   {
     title: "Appaura Analytics Dashboard",
     role: "Built at Appaura",
+    cover: "/projects/appaura-analytics.svg",
     description: "Financial analytics dashboard with live balance tracking, transaction history and interactive charts. It runs on Springboot REST APIs and MongoDB.",
     image: "/projects/country.png",
     tags: ["React.js", "Supabase", "Tailwind CSS", "MongoDB"],
@@ -310,7 +305,7 @@ const PROJECTS = [
     title: "Web-Based Diabetes Prediction",
     role: "Academic Project",
     description: "Full-stack web app that predicts diabetes risk using several machine-learning models built in Python, with a Node.js and MongoDB backend, secure login and a clean Tailwind interface.",
-    image: "/projects/diabetes_pred.png",
+    image: "/projects/diabetes-prediction.svg",
     tags: ["React.js", "Python", "Node.js", "MongoDB"]
   },
   {
@@ -318,14 +313,16 @@ const PROJECTS = [
     role: "Learning Project · Zero To Mastery",
     description: "E-commerce store with a product catalogue, cart and checkout. Built with Redux for state management, Firebase for login and Firestore for real-time data.",
     image: "/projects/book_store.png",
-    tags: ["React.js", "Redux", "Firebase"]
+    tags: ["React.js", "Redux", "Firebase"],
+    links: [{ label: "Project Details", url: "https://zerotomastery.io/courses/learn-react/#projects" }]
   },
   {
     title: "Fanbase UI Recreation",
     role: "Learning Project",
     description: "Close, responsive recreation of the Fanbase social app's interface, built to practise component design, profile and post screens, and live-updating feeds.",
     image: "/projects/fanbase.png",
-    tags: ["React.js", "Tailwind CSS"]
+    tags: ["React.js", "Tailwind CSS"],
+    links: [{ label: "Live Website", url: "https://www.fanbase.app/" }]
   }
 ];
 const FILTERS = ["All", "AI", "Next.js", "React.js", "Full Stack", "TypeScript"];
@@ -459,6 +456,7 @@ const LANGUAGES = [
   { label: "English", level: "Professional working proficiency" },
   { label: "Urdu", level: "Native" }
 ];
+const TESTIMONIALS = [];
 const projectsText = PROJECTS.map((p) => `- ${p.title} (${p.role}): ${p.description}`).join("\n");
 const experienceText = EXPERIENCE.map(
   (e) => `- ${e.role} at ${e.company}, ${e.place} (${e.period}): ${e.points.join(" ")}`
@@ -579,5 +577,6 @@ export {
   EDUCATION as b,
   CERTIFICATIONS as c,
   PROFICIENCY as d,
+  TESTIMONIALS as e,
   router as r
 };
